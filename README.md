@@ -67,7 +67,12 @@ The six required metrics are Accuracy, AUC, Precision, Recall, F1, and Matthews 
 
 ## Deployment
 
-1. Create a GitHub repository and push this project, including the generated `models/`, `data/test_data.csv`, and `experiments/results.csv` files.
-2. Sign in to [Streamlit Community Cloud](https://share.streamlit.io/) with GitHub.
-3. Create an app from the repository, select the main branch, and set `app.py` as the entry point.
-4. Add the deployed app URL and GitHub URL to the final submission PDF.
+**GitHub repository:** https://github.com/2026aj05873/aiml-zg565-ml-assignment-2
+
+**Live Streamlit app:** https://aiml-zg565-ml-assignment-2-jaqn7tc4jg9fa3wubxdvql.streamlit.app/
+
+| Deployment item | Status |
+|---|---|
+| GitHub repository | Published with the source code, trained models, root-level `test_data.csv`, and experiment results. | status : created and pushed the initial commit
+| Streamlit Community Cloud | Deployed from the `main` branch using `app.py` as the entry point. | status : Checked the live app after deploying the github repo. working as expected.
+| Final submission PDF | Include the GitHub URL, Streamlit URL, README content, and the required BITS Virtual Lab execution screenshot. | status : Pending!! to be tested in lab environment
