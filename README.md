@@ -2,7 +2,7 @@
 
 ## Problem statement
 
-This project compares five classification models on the Wisconsin Diagnostic Breast Cancer dataset: Logistic Regression, Decision Tree, K-Nearest Neighbors, Gaussian Naive Bayes, and Support Vector Machine. The objective is to predict whether a tumour is malignant (`0`) or benign (`1`) using 30 numerical measurements.
+This project compares five classifiers on the Wisconsin Diagnostic Breast Cancer dataset. The goal is to predict whether a tumour is malignant (`0`) or benign (`1`) from 30 numerical features.
 
 ## Dataset description
 
@@ -12,7 +12,7 @@ This project compares five classification models on the Wisconsin Diagnostic Bre
 - **Task:** Binary classification
 - **Split:** Stratified 80:20 train/test split, `random_state=2026`
 
-The reproducible local copy is created at `data/breast_cancer_wdbc.csv` by `train.py`; the persisted evaluation split is `test_data.csv` in the project root.
+`train.py` creates a local dataset copy at `data/breast_cancer_wdbc.csv` and saves the evaluation split as `test_data.csv` in the project root.
 
 ## Repository structure
 
@@ -40,11 +40,11 @@ python train.py
 streamlit run app.py
 ```
 
-The Streamlit app loads saved models only. Upload a labelled CSV that includes the 30 expected features and the `target` column; it does not retrain any model.
+The Streamlit app uses the saved models. Upload a labelled CSV with the 30 feature columns and the `target` column. The app evaluates the uploaded file and does not retrain a model.
 
 ## Models and metrics
 
-The six required metrics are Accuracy, AUC, Precision, Recall, F1, and Matthews Correlation Coefficient (MCC). The values below come from the persisted stratified test split; the source data is available in `experiments/results.csv`.
+The metrics below were calculated on the saved stratified test split. The full values are also in `experiments/results.csv`.
 
 | ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
 |---|---:|---:|---:|---:|---:|---:|
@@ -58,12 +58,12 @@ The six required metrics are Accuracy, AUC, Precision, Recall, F1, and Matthews 
 
 | ML Model Name | Observation about model performance |
 |---|---|
-| Logistic Regression | Achieved the joint-best accuracy and F1 score, with the highest recall. It is a strong linear baseline for this standardized feature set. |
-| Decision Tree | Delivered the highest precision, but its lower recall and MCC indicate that its constrained tree structure missed more benign cases than the other models. |
-| K-Nearest Neighbors | Matched Logistic Regression on accuracy, recall, F1, and MCC. It performs well after feature scaling but is more sensitive to the neighbourhood-size choice. |
-| Gaussian Naive Bayes | Produced a competitive AUC and reasonable F1 score, but its conditional-independence assumption limits its accuracy on correlated medical measurements. |
-| Support Vector Machine | Achieved the best AUC and the second-best F1/MCC. Its high precision makes it a strong alternative where false-positive predictions are costly. |
-| Overall winner for your dataset | **Logistic Regression** is selected because it ties for the best accuracy and F1 score while achieving the highest recall and offering a transparent, interpretable decision boundary. |
+| Logistic Regression | It gave the joint-best accuracy and F1 score. It also had the highest recall. |
+| Decision Tree | It had the highest precision, but its recall was lower than the other models. |
+| K-Nearest Neighbors | It matched Logistic Regression on accuracy, recall, F1, and MCC for this test split. |
+| Gaussian Naive Bayes | Its AUC was good, but its accuracy and F1 score were lower than the top models. |
+| Support Vector Machine | It had the highest AUC. Its precision was high, but recall was lower than Logistic Regression and KNN. |
+| Overall winner for Wisconsin Diagnostic Breast Cancer dataset dataset | **Logistic Regression** was selected because it had high accuracy, high recall, and the joint-best F1 score. |
 
 ## Deployment
 
@@ -71,8 +71,8 @@ The six required metrics are Accuracy, AUC, Precision, Recall, F1, and Matthews 
 
 **Live Streamlit app:** https://aiml-zg565-ml-assignment-2-jaqn7tc4jg9fa3wubxdvql.streamlit.app/
 
-| Deployment item | Status |
+| Deployment item | Current status |
 |---|---|
-| GitHub repository | Published with the source code, trained models, root-level `test_data.csv`, and experiment results. | status : created and pushed the initial commit
-| Streamlit Community Cloud | Deployed from the `main` branch using `app.py` as the entry point. | status : Checked the live app after deploying the github repo. working as expected.
-| Final submission PDF | Include the GitHub URL, Streamlit URL, README content, and the required BITS Virtual Lab execution screenshot. | status : Pending!! to be tested in lab environment
+| GitHub repository | The first commit has been pushed. The repository includes the code, trained models, `test_data.csv`, and experiment results. |
+| Streamlit Community Cloud | The app is deployed from `main` with `app.py` as the entry point. The live app was checked after deployment. |
+| Final submission PDF | Pending. It needs the GitHub URL, Streamlit URL, README content, and the BITS Virtual Lab execution screenshot. |
