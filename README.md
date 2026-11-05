@@ -40,7 +40,7 @@ python train.py
 streamlit run app.py
 ```
 
-The Streamlit app uses the saved models. Upload a labelled CSV with the 30 feature columns and the `target` column. The app evaluates the uploaded file and does not retrain a model.
+The Streamlit app evaluates the bundled `test_data.csv` using the saved models by default. You can also upload a labelled CSV with the 30 feature columns and the `target` column. The app does not retrain a model.
 
 ## Models and metrics
 
@@ -59,10 +59,10 @@ The metrics below were calculated on the saved stratified test split. The full v
 | ML Model Name | Observation about model performance |
 |---|---|
 | Logistic Regression | It gave the joint-best accuracy and F1 score. It also had the highest recall. |
-| Decision Tree | It had the highest precision, but its recall was lower than the other models. |
+| Decision Tree | It had high precision, but its recall was lower than the other models. |
 | K-Nearest Neighbors | It matched Logistic Regression on accuracy, recall, F1, and MCC for this test split. |
 | Gaussian Naive Bayes | Its AUC was good, but its accuracy and F1 score were lower than the top models. |
-| Support Vector Machine | It had the highest AUC. Its precision was high, but recall was lower than Logistic Regression and KNN. |
+| Support Vector Machine | It had the highest AUC and precision, but recall was lower than Logistic Regression and KNN. |
 | Overall winner for Wisconsin Diagnostic Breast Cancer dataset dataset | **Logistic Regression** was selected because it had high accuracy, high recall, and the joint-best F1 score. |
 
 ## Deployment
@@ -75,4 +75,4 @@ The metrics below were calculated on the saved stratified test split. The full v
 |---|---|
 | GitHub repository | The first commit has been pushed. The repository includes the code, trained models, `test_data.csv`, and experiment results. |
 | Streamlit Community Cloud | The app is deployed from `main` with `app.py` as the entry point. The live app was checked after deployment. |
-| Final submission PDF | Pending. It needs the GitHub URL, Streamlit URL, README content, and the BITS Virtual Lab execution screenshot. |
+| Final submission PDF | Prepared locally with the required links, README content, and BITS Virtual Lab execution screenshot. Submission has not been confirmed. |

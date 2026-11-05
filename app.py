@@ -62,11 +62,14 @@ def main() -> None:
         type="csv",
         help="The CSV must include all 30 feature columns and the target column named 'target'.",
     )
-    if uploaded_file is None:
-        st.info("Upload a labelled test CSV to evaluate a saved model.")
+    default_data = PROJECT_ROOT / "test_data.csv"
+    if uploaded_file is None and not default_data.exists():
+        st.info("The default test data is unavailable. Upload a labelled test CSV to continue.")
         return
 
-    uploaded_data = pd.read_csv(uploaded_file)
+    data_source = uploaded_file if uploaded_file is not None else default_data
+    st.caption(f"Evaluating: {uploaded_file.name if uploaded_file is not None else default_data.name}")
+    uploaded_data = pd.read_csv(data_source)
     missing_columns = set(metadata["features"] + [TARGET_COLUMN]) - set(uploaded_data.columns)
     if missing_columns:
         st.error("The uploaded CSV is missing: " + ", ".join(sorted(missing_columns)))
@@ -118,7 +121,7 @@ def main() -> None:
         )
         st.dataframe(pd.DataFrame(report).transpose().round(4), use_container_width=True)
 
-    st.subheader("Uploaded data preview")
+    st.subheader("Test data preview")
     st.dataframe(uploaded_data.head(), use_container_width=True)
 
 
